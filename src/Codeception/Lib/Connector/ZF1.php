@@ -32,7 +32,12 @@ class ZF1 extends Client
             ->getBootstrap()
             ->getResource('frontcontroller');
         $this->front
-            ->throwExceptions(true)
+            // Why this has been overwritten here when it can be handled by the
+            // config resources of the `frontcontroller`?
+            // This breaks functional tests since instead of bubbling
+            // the exception higher up for the error plugin
+            // it stops the dispatch of the controller-action
+            // ->throwExceptions(true)
             ->returnResponse(false);
     }
 
