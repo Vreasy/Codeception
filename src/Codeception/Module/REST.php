@@ -97,6 +97,10 @@ EOF;
         $this->params = [];
         $this->response = "";
         $this->connectionModule->headers = [];
+        if ($this->isFunctional) {
+            $this->client->setServerParameter('PHP_AUTH_USER', null);
+            $this->client->setServerParameter('PHP_AUTH_PW', null);
+        }
     }
 
     public function _conflicts()
