@@ -153,6 +153,7 @@ class ZF1 extends Framework
         $_GET = [];
         $_POST = [];
         $_COOKIE = [];
+        $_REQUEST = [];
         if ($this->bootstrap) {
             $fc = $this->bootstrap->getBootstrap()->getResource('frontcontroller');
             if ($fc) {
