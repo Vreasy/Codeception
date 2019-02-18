@@ -43,6 +43,14 @@ class Cept extends Test implements Interfaces\Plain, Interfaces\ScenarioDriven, 
         } catch (\ParseError $e) {
             throw new TestParseException($testFile, $e->getMessage());
         }
+
+        // Clean up any local variable defined on the test
+        $vars = array_keys(get_defined_vars());
+        foreach($vars as $key) {
+            unset($$key);
+        }
+        unset($key);
+        unset($vars);
     }
 
     public function getSignature()
